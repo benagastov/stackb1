@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV IndexedDB Web App</title>
+    <script src="https://unpkg.com/dexie@3.2.2/dist/dexie.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      button {
+        margin: 10px 0;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        padding: 12px 16px;
+        z-index: 1;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSV IndexedDB Web App</h1>
+    <button onclick="generateAndSaveData()">Generate New Data</button>
+    <div class="dropdown">
+      <button>Select Columns</button>
+      <div id="columnSelector" class="dropdown-content"></div>
+    </div>
+    <table id="dataTable"></table>
+
+    <script src="indexeddb-operations.js"></script>
+    <script src="dom-manipulation.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        initDB();
+        loadDataFromIndexedDB();
+      });
+    </script>
+  </body>
+</html>
